@@ -1,0 +1,70 @@
+# Gradle build output
+/build/
+/.gradle/
+/out/
+
+# IntelliJ / Eclipse / VS Code
+.idea/
+/*.iml
+*.class
+*.log
+*.ipr
+*.iws
+*.swp
+*.DS_Store
+.vscode/
+*.bak
+*.tmp
+
+# OS-specific
+Thumbs.db
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Test reports
+/test-output/
+/test-results/
+/target/
+
+# Maven cache (if any)
+.mvn/
+!**/src/main/**/.mvn
+
+# JARs/WARs
+*.jar
+*.war
+*.ear
+
+# Spring Boot dev tools
+.spring-boot-devtools.properties
+
+# Docker
+*.pid
+docker-compose.override.yml
+**/docker/data/
+**/docker/mysql/**/data/
+**/mysql-data/
+.env
+
+# IDE Specific
+*.classpath
+*.project
+*.settings/
+
+# Lombok generated config
+lombok.config
+
+# Generated docs
+/build/generated-snippets/
+docs/asciidoc/
+
+# Ignore compiled test classes
+**/test/**/build/
+
+# Local environment override
+application-local.properties
+application-dev.properties
+application-test.properties

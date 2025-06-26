@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  saicmysqldb:
+    image: mysql:8.0
+    container_name: mysql-container-saic
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: saic
+      MYSQL_USER: demo
+      MYSQL_PASSWORD: demopass
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network-saic-demo
+
+  saic-int-sb-demo-app:
+    build: .
+    container_name: saic-int-sb-demo-app
+    ports:
+      - "8085:8080"
+    depends_on:
+       saicmysqldb:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://saicmysqldb:3306/saic
+      SPRING_DATASOURCE_USERNAME: demo
+      SPRING_DATASOURCE_PASSWORD: demopass
+    networks:
+      - app-network-saic-demo
+
+networks:
+  app-network-saic-demo:
